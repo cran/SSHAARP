@@ -1,0 +1,176 @@
+SSHAARP 1.0.0 (4/16/2020)
+-----------------------------
+   * All messages output to console can now be suppressed
+   * Vignette changes
+
+SSHAARP 1.0.0 (4/7/2020)
+-----------------------------
+   * Used on.exit() to ensure the working directory is reset in PALM()
+   * Incorporated Windows specific arguments for PALM() moving written output to user specified directory
+   * Vignette changes
+
+SSHAARP 1.0.0 (3/25/2020)
+-----------------------------
+   * Added parameter to PALM() to allow the user to specify which directory the map should be written to. Default directory is the user's working directory
+
+SSHAARP 1.0.0 (3/23/2020)
+-----------------------------
+   * Description changes
+   * Adjusted PALM() to have temporary files stored in a temporary directory; final image is output in the user's initial working directory
+
+
+SSHAARP 1.0.0 (3/12/2020)
+-----------------------------
+   * Vignette changes
+   * Additional documentation to PALM()
+   * Changed some error messages in checkMotif() to warning messages
+
+
+SSHAARP 1.0.0 (3/9/2020)
+-----------------------------
+   * Fixed rounding issues in PALM()
+   * CRAN submission fixes
+   * Ouputs a message if max allele frequency is too small to generate an accurate map
+
+SSHAARP 1.0.0 (2/19/2020)
+-----------------------------
+   * Submission to CRAN
+
+SSHAARP 0.10.0.9000 (2/11/2020)
+-----------------------------
+   * Adapted PALM() to work on Windows and Linux operating systems
+   * Code additions to PALM() to detect whether GMT software is installed on the user's machine
+   * Changes to vignette documentation
+   * Updated IMGTprotalignments to IPD-IMGT/HLA Database V 3.39.0
+
+SSHAARP 0.9.4.9000 (2/3/2020)
+-----------------------------
+   * Updated motif maps provided as examples in vignette
+
+SSHAARP 0.9.3.9000 (1/9/2020)
+-----------------------------
+   * Revisions to PALM() to remove reshape2 package functions due to deprecation
+   * Replaced previous reshape2 functionalities with the data.table package and custom code
+
+SSHAARP 0.9.2.9000 (1/7/2020)
+-----------------------------
+   * Split DRB into DRB1, DRB3, DRB4, and DRB5 in IMGTprotalignments
+   * Fixed lack of reference sequence for DRB3/4/5 in IMGTprotalignments
+   * Fixed row numbers for DRB3/4/5 in IMGTprotalignments
+   * Added 'gmt' in front of gmt.system() arguments for PALM() due to GMT update
+
+SSHAARP 0.9.1.9000 (12/13/2019)
+-----------------------------
+   * Changed formatting of "InDel_N" to "INDEL-N"
+
+SSHAARP 0.9.0.9000 (12/4/2019)
+-----------------------------
+   * Removed countSpaces() function and incorporated into BLAASD() script
+   * Changed amino acid positioning from actual coordinate system to alignment coordinate system
+   * Added specCirc(), a function in BLAASD() to produce an accurate dataframe for DQB1 (see vignette under "BLAASD()" for more details)
+   * Changes to vignette documentation
+   * Exon boundaries for all exons in protein coding genes in the IPD-IMGT/HLA Database V 3.38.0 release are now incorporated into SSHAARP as "AA_atlas"
+
+
+SSHAARP 0.8.3.9000 (11/5/2019)
+-----------------------------
+   * Changed pscoast() area parameter to include areas that were previously excluded from       color application based on heat map frequencies (e.g. Taiwan, Hokkaido).
+   * Updated map visuals in vignette to reflect more current maps produced by PALM().
+
+
+SSHAARP 0.8.2.9000 (11/4/2019)
+-----------------------------
+   * Changes to vignette documentation.
+   * Changes to data documentation.
+   * Rounding variables set to three digits in PALM() for decile intervals
+
+SSHAARP 0.8.1.9000 (10/29/2019)
+-----------------------------
+   * "all_HLAalignments" incorporated dataset changed to "IMGTprotalignments"
+   * TAP1 and TAP2 alignments now present in IMGTprotalignments
+   * Set filename parameter default to solberg_dataset for dataSubset() and PALM()
+   * Changed findMotif() "input_motif" parameter to "motif"
+   * Added package version documentation to vignette
+   * Made legend font size smaller for PALM() maps
+
+SSHAARP 0.8.0.9000 (10/21/2019)
+-----------------------------
+   * AA_segments variable changed to HLAalignments
+   * V. 3.38.0 HLA protein alignments for all HLA loci now packaged as a dataset as "all_HLAalignments"
+   * BLAASD() and findMotif() accomodations for HLA-DRB3/4/5
+   * Locus checking capability incorporated into BLAASD()
+
+SSHAARP 0.7.1.9000 (10/9/2019)
+-----------------------------
+   * BLAASD() accommodations for HLA-TAP1 and HLA-TAP2
+
+SSHAARP 0.7.0.9000 (10/6/2019)
+-----------------------------
+   * Changed motifCheck() function name to checkMotif()
+   * Added additional syntax check to motifCheck()
+   * Changes to motifCheck() documentation
+   * Changes to findMotif() documentation
+   * tryCatch() statement added to BLAASD() to ensure loci are input correctly
+   * Subsequent adjustments to checkMotif(), findMotif(), and PALM() to return the error message if any loci are input incorrectly
+
+SSHAARP 0.6.1.9000 (09/30/2019)
+-----------------------------
+   * Minor change to motifCheck() to specify motif locus return, in the event AA_segments is already present in the working environment.
+
+
+SSHAARP 0.6.0.9000 (09/29/2019)
+-----------------------------
+   * Changes in PALM() for the function to stop and return an error mesage if an allele for the defined motif is not found in the Solberg dataset, fixed rounding error in RoundTo() that resulted in an inaccurate upper bound for the legend.
+   * BLAASD() can now search for "DRB" loci.
+   * Used previous code that checked motif formatting from findMotif() to create a new function, motifCheck().
+   * Integrated motifCheck() into findMotif() and dataSubset().
+   * Changes to vignette documentation.
+
+SSHAARP 0.5.0.9000 (09/23/2019)
+-----------------------------
+   * Changes to PALM()- added code for if filterMigrant==FALSE, heatmap file output is now saved as "'the input motif'.jpg" instead of "basemap.jpg", data frame with error message and motif is output if the entered motif is not found, and error in calculating cumulative population allele frequency fixed.
+   * The Solberg dataset is now packaged into SSHAARP() as solberg_dataset
+   * findMotif() edited for a more efficient runtime
+   * Changes to vignette documentation.
+
+SSHAARP 0.4.0.9000 (09/18/2019)
+-----------------------------
+   * Fixed findMotif() -- parsing code was not included in previous version release.
+   * Changes to vignette documentation.
+   * Changes to documentation in all functions.
+
+SSHAARP 0.3.0.9000 (09/10/2019)
+-----------------------------
+   * Removed convertCoordinates() as a function and integrated its capabilities into dataSubset().
+   * Fixed findMotif() -- an error message was output when a non-existent variant for a given amino acid position was anywhere but the last position.
+   * Changes to vignette documentation.
+   * Changes to documentation in all functions.
+
+SSHAARP 0.2.2.9000 (09/03/2019)
+-----------------------------
+  * Expanded BLAASD() capabilities to support HLA-DQA1 and HLA-DPB1.
+  * Edits to findMotif() and PALM() documentation.
+  * Additional checks added for user error in inputting motif for findMotif().
+
+SSHAARP 0.2.1.9000 (08/13/2019)
+-----------------------------
+  * Changed buildAAsegments() to BLAASD() [i.e. Building Loci Amino Acid Specific Dataframes.
+  * Added more files for removal via gmt.system BASH code in PALM() -- only basemap.jpg will be output to working directory.
+
+SSHAARP 0.2.0.9000 (08/07/2019)
+-----------------------------
+   * Removed correspondence row for actual coordinates from buildAAsegments; column names are now alignment sequence coordinates.
+   * Adjusted findMotif to match column names in new AA_segments table.
+   * Added checks for possible user error in inputting motif.
+
+SSHAARP 0.1.0.9000 (07/31/2019)
+-----------------------------
+   * Change to findMotif, where if a motif is not found, a dataframe with the motif and and error message is returned.
+   * Changes to documentation in all functions.
+   * Changes to vignette to include more information about the Solberg datasets.
+
+SSHAARP 0.0.0.9000 (07/26/2019)
+-----------------------------
+   * Created package with functions buildAAsegments, convertCoordinates, countSpaces, dataSubset, findMotif, and PALM
+
+

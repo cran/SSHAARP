@@ -1,4 +1,4 @@
-##BLAASD - Build Loci Amino Acid Specific Dataframe v1 16APR20
+##BLAASD - Build Loci Amino Acid Specific Dataframe v1.1.0 13Sep21
 #'BLAASD - Build Loci Amino Acid Specific Dataframe
 #'
 #'Extracts alignment sequence information for a given locus from the ANHIG/IMGTHLA GitHub repository to produce a dataframe of individual amino acid data for each amino acid position for all alleles, for a user-defined HLA locus or loci. The first 4 columns are locus, allele, trimmed allele, and allele_name.
@@ -36,7 +36,6 @@ BLAASD<-function(loci){
 
   #empty variables for correspondence table
   pepsplit<-refexon<-AA_aligned<-HLAalignments<-inDels<-corr_table<-cols<-downloaded_segments<-w<-alignment_positions<-alignment_length<-alignment_start<-prot_extractions<-refblock_number<-end_char<-space_diff<-sapply(loci, function(x) NULL)
-
 
   for(i in 1:length(loci)){
 
@@ -108,13 +107,17 @@ BLAASD<-function(loci){
       if(nrow(alignment[[i]][start[[loci[i]]][k]:end[[loci[i]]][k],])!=nrow(alignment[[loci[i]]][start[[loci[i]]][1]:end[[loci[i]]][1],])){
         x<-as.data.frame(alignment[[loci[i]]][,1][start[[loci[i]]][1]:end[[loci[i]]][1]][-c(1,2)], stringsAsFactors = F)
         colnames(x)<-paste(loci[[i]], "alleles", sep="_")
-        x<-cbind.data.frame(x, pepseq=as.character(paste(rep(".", nchar(tail(alignment[[loci[i]]][,2], 1))), collapse = "")), stringsAsFactors=FALSE)
+        #extraneous alleles at end
         y<-data.frame(tail(alignment[[loci[i]]], (nrow(alignment[[i]][start[[loci[i]]][k]:end[[loci[i]]][k],][nrow(alignment[[i]][start[[loci[i]]][k]:end[[loci[i]]][k],])!=nrow(alignment[[loci[i]]][start[[loci[i]]][1]:end[[loci[i]]][1],]),])-2)), stringsAsFactors = F)
+        #use # of rows in y to use in n parameter for tail()
+        #examine which has the highest number of characters and use as rep arg
+        x<-cbind.data.frame(x, pepseq=as.character(paste(rep(".", max(nchar(tail(alignment[[loci[i]]][,2], nrow(y))))), collapse = "")), stringsAsFactors=FALSE)
         x$pepseq[match(y[,1], x[,1])]<-y$pepseq
         alignment[[loci[i]]]<-as.matrix(rbind(head(alignment[[loci[i]]], -(nrow(alignment[[i]][start[[loci[i]]][k]:end[[loci[i]]][k],][nrow(alignment[[i]][start[[loci[i]]][k]:end[[loci[i]]][k],])!=nrow(alignment[[loci[i]]][start[[loci[i]]][1]:end[[loci[i]]][1],]),])-2)), x))
         start[[loci[i]]]<-as.numeric(grep("Prot", alignment[[loci[i]]]))
         end[[loci[i]]] <- as.numeric(c(start[[loci[i]]][2:length(start[[loci[i]]])]-1,nrow(alignment[[loci[i]]])))}
     }
+
     #if a locus has extra formatting, resulting in unqeual rows, start and end will be updated to reflect subsetting
     #if a locus has no extra formatting, start and end will remain the same, as procured by earlier code
     for(e in 1:length(start[[loci[i]]])){
@@ -184,7 +187,7 @@ BLAASD<-function(loci){
 
     #fills in space with NA for alleles with premature termination to make it the same number of characters
     #as the reference sequence
-    pepsplit[[loci[i]]]<- lapply(pepsplit[[loci[i]]],function(x) c(x,rep("NA",nchar(refexon[[loci[i]]])-length(x))))
+    pepsplit[[loci[i]]]<- lapply(pepsplit[[loci[i]]],function(d) c(d,rep("NA",nchar(refexon[[loci[i]]])-length(d))))
 
     #binds pep_split together by element in its previous list form by row
     pepsplit[[loci[i]]]<- do.call(rbind,pepsplit[[loci[i]]])

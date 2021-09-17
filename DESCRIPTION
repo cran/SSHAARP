@@ -1,6 +1,5 @@
 Package: SSHAARP
-Version: 1.0.1
-Date: 2020-10-08
+Version: 1.1.0
 Title: Searching Shared HLA Amino Acid Residue Prevalence
 Authors@R: 
     c(person("Livia", "Tran",
@@ -18,16 +17,16 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports: data.table, stringr, gtools, BIGDAWG, gmt, DescTools, dplyr,
-        sessioninfo, filesstrings
+        utils, filesstrings
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 SystemRequirements: GMT (5 or 6), Ghostscript (>=9.6)
 RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2020-10-08 20:36:02 UTC; tran.livia
+Packaged: 2021-09-16 23:18:52 UTC; tran.livia
 Author: Livia Tran [aut, cre],
   Steven Mack [aut],
   Josh Bredeweg [ctb],
   Dale Steinhardt [ctb]
 Repository: CRAN
-Date/Publication: 2020-10-09 10:40:02 UTC
+Date/Publication: 2021-09-17 08:30:02 UTC

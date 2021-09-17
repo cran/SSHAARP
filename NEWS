@@ -1,3 +1,8 @@
+SSHAARP 1.1.0 (9/16/2021)
+-----------------------------
+   * Fixed Imports section in Description to include utils instead of sessioninfo
+   * Fixed BLAASD() error with processing HLA alleles with peptide sequences longer than the reference sequence
+
 SSHAARP 1.0.1 (10/08/2020)
 -----------------------------
    * Resubmitted for unarchiving from CRAN

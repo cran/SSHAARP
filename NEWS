@@ -1,7 +1,36 @@
-SSHAARP 1.1.0 (9/16/2021)
+SSHAARP 2.0.5 (12/10/2024)
 -----------------------------
-   * Fixed Imports section in Description to include utils instead of sessioninfo
-   * Fixed BLAASD() error with processing HLA alleles with peptide sequences longer than the reference sequence
+  * Fixed width error in PALM documentation
+  * Vignette changes
+
+SSHAARP 2.0.4 (12/2/2024)
+-----------------------------
+  * Documentation changes
+
+SSHAARP 2.0.3 (11/20/2024)
+-----------------------------
+  * Vignette changes
+  * Added checks to readFilename to check if user provided dataset structure is the same as bundled datasets
+  * Documentation + example revisions
+
+SSHAARP 2.0.2 (11/12/2024)
+-----------------------------
+  * Cleaned up references to the HLAalignment object
+
+SSHAARP 2.0.1 (10/24/2024)
+-----------------------------
+  * Vignette changes
+  * Changed default resolution and documentation in PALM
+  * Removed the IMGTprotalignments.rda object and replaced with one call to
+  buildAlignments in PALM
+
+SSHAARP 2.0.0 (09/12/2024)
+-----------------------------
+  * Adjusted checkMotifSyntax() code to accommodate findMotif() for inDel positions
+  * Added isNamePresent(), getVariantInfo(), checkLocusANHIG(), checkLocusDataset(), checkMotifSyntax(), checkAlleleSyntax(), verifyAlleleANHIG(), checkPosition(), verifyAlleleANHIGHaplo(), dataSubsetHaplo(), and readFilename()
+  * Revised dataSubset(), findMotif(), PALM()
+  * Revised documentation for all functions
+  * Updated solberg_dataset and IMGTprotalignments data objects
 
 SSHAARP 1.0.1 (10/08/2020)
 -----------------------------
